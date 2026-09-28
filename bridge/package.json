@@ -1,0 +1,16 @@
+{
+  "name": "streamdeck-web-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Stream Deck などからの HTTP を受けて Chrome 拡張に中継するローカルサーバ",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

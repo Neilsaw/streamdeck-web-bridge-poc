@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Stream Deck Web Bridge (PoC)",
+  "version": "0.1.0",
+  "description": "ローカルのブリッジから受け取ったデータを、指定したサイトの入力欄に流し込む学習用サンプル",
+  "content_scripts": [
+    {
+      "matches": ["https://www.google.com/*", "https://www.google.co.jp/*"],
+      "js": ["dom-helpers.js", "sites.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -76,6 +76,11 @@ Google の検索欄に `hello` が入り、検索が実行されれば成功で�
 
 [docs/04-stream-deck.md](docs/04-stream-deck.md) を参照。ボタンに上の URL を設定するだけです。
 
+## bridge を起動せずに使う（Stream Deck プラグイン版）
+
+bridge の役割を Stream Deck プラグインの中に入れた版を `streamdeck-plugin/` に用意しています。Stream Deck アプリと一緒に動くので別の起動は不要で、送る値はボタンの設定欄に書き、結果はボタンに ✓ / ⚠ で表示されます。拡張はそのまま使えます。
+手順は [docs/05-streamdeck-plugin.md](docs/05-streamdeck-plugin.md)。仕組みの理解には、1 段ずつ確かめられる bridge 版から始めるのがおすすめです。
+
 ## ファイル構成
 
 | パス                       | 役割                                                                          |
@@ -85,7 +90,8 @@ Google の検索欄に `hello` が入り、検索が実行されれば成功で�
 | `extension/sites.js`       | **どの URL で何をするか** の定義。自分のサイト向けに主に書き換えるのはここ    |
 | `extension/dom-helpers.js` | 値の入力・クリック・要素待ちなど、DOM 操作の共通部品                          |
 | `extension/content.js`     | bridge との接続と、届いた指示を `sites.js` に渡す本体（通常は触らなくてよい） |
-| `docs/`                    | 仕組みの解説、DOM の調べ方、自分のサイトへの応用手順                          |
+| `streamdeck-plugin/`       | bridge を内蔵した Stream Deck プラグイン版（TypeScript、要ビルド）            |
+| `docs/`                    | 仕組みの解説、DOM の調べ方、自分のサイトへの応用手順、プラグイン版の手順      |
 | `CLAUDE.md`                | Claude Code 向けの説明（このリポジトリで Claude Code を開くと読まれる）       |
 
 ## 自分のサイトで使うには

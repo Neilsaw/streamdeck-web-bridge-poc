@@ -24,7 +24,7 @@
 1. **`manifest.json` の `content_scripts.matches`** — Chrome がコンテンツスクリプトを読み込むページ。ここにないサイトでは拡張のコードは一切動かない。ワイルドカードの書式は [Chrome のドキュメント](https://developer.chrome.com/docs/extensions/develop/concepts/match-patterns) を参照
 2. **`sites.js` の `urlPattern`（正規表現）** — 読み込まれたページのうち、実際に操作してよい画面をさらに絞る。例: 同じドメインでも「処方画面だけ」
 
-さらに bridge 側の `ALLOWED_ORIGINS` は、WebSocket 接続を受け付けるサイトのオリジン一覧です。**サイトを追加したら 3 か所をそろえて変更** します。
+さらに bridge 側の `ALLOWED_ORIGINS` は、WebSocket 接続を受け付けるサイトのオリジン一覧です。**サイトを追加したらこれらをそろえて変更** します（プラグイン版を使う場合は `streamdeck-plugin/src/hub.ts` の `ALLOWED_ORIGINS` も）。
 
 ## なぜコンテンツスクリプトから直接 WebSocket でつなぐのか
 

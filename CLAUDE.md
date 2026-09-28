@@ -9,7 +9,8 @@
 - `extension/` — Manifest V3、ビルド不要の素の JavaScript。`dom-helpers.js` → `sites.js` → `content.js` の順に読み込まれ、グローバルを共有する
   - `sites.js` の `SITES` 配列が「どの URL（`urlPattern`）で何をするか（`run(payload, dom)`）」の定義。**サイト対応の変更は基本ここだけ**
   - `content.js` は bridge との接続・再接続・タブの可視判定・ack 返却
-- `docs/` — 解説（仕組み / DOM 調査 / 応用 / Stream Deck 設定）
+- `streamdeck-plugin/` — bridge を内蔵した Stream Deck プラグイン版（SDK `@elgato/streamdeck` 3、`streamdeck create` のテンプレート準拠の TypeScript + rollup）。`src/hub.ts` が `bridge/server.mjs` の WebSocket 側と同じプロトコル・同じポート 50002 を実装しているので、拡張は共通。**プロトコルを変えるときは `bridge/server.mjs` と `src/hub.ts` の両方を直す**。bridge 版と同時には起動できない。ビルドは `cd streamdeck-plugin && npm run build`、型チェックは `npx tsc --noEmit`、manifest 検証は `npx streamdeck validate com.example.webbridge.sdPlugin`
+- `docs/` — 解説（仕組み / DOM 調査 / 応用 / Stream Deck 設定 / プラグイン版）
 
 ## プロトコル（JSON）
 
@@ -21,12 +22,12 @@
 
 ## サイトを追加・変更するときの約束
 
-1. **3 か所をそろえる**: `extension/manifest.json` の `matches`、`extension/sites.js` の `urlPattern`、`bridge/server.mjs` の `ALLOWED_ORIGINS`
+1. **URL・オリジンの定義をそろえる**: `extension/manifest.json` の `matches`、`extension/sites.js` の `urlPattern`、`bridge/server.mjs` と `streamdeck-plugin/src/hub.ts` の `ALLOWED_ORIGINS`
 2. **セレクタは Claude in Chrome で実物を調べてから決める**。推測で書かない。自動生成っぽい id / class（`#ti6dpd`, `.css-1x2y3z`, `#mui-12`）は使わず、`name` / `data-testid` / `aria-label` を優先。一致数と可視性も確認する（手順は `docs/02-dom-investigation.md`）
 3. 値の入力は `dom.setValue`（ネイティブ setter + input/change イベント）を使う。`el.value =` の直接代入はしない
 4. **調査・動作確認中に、対象サイトの登録・送信・削除ボタンを押さない**。押す処理を `run()` に入れる場合もユーザーに確認し、最初はコメントアウトで渡す
 5. ログイン・パスワード入力はユーザーが行う
-6. ビルドツールや依存を増やさない（学習用なのでビルド不要を保つ）
+6. `extension/` と `bridge/` にはビルドツールや依存を増やさない（学習用なのでビルド不要を保つ）
 
 ## 動作確認
 

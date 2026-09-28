@@ -32,7 +32,7 @@ argument-hint: <対象画面の URL> と、やりたいこと
 
 - `extension/sites.js` の `SITES` に追加（調査で分かったことをコメントに残す）
 - `extension/manifest.json` の `matches`
-- `bridge/server.mjs` の `ALLOWED_ORIGINS` 既定値
+- `bridge/server.mjs` の `ALLOWED_ORIGINS` 既定値と `streamdeck-plugin/src/hub.ts` の `ALLOWED_ORIGINS`
 - 必要なら `extension/dom-helpers.js` に汎用の部品を足す（サイト固有の処理は `sites.js` 側に置く）
 
 ## 4. 動作確認の案内

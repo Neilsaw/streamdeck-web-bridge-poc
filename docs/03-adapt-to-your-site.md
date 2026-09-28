@@ -1,6 +1,6 @@
 # 03. 自分のサイト向けに作り替える
 
-## 変更する 3 か所
+## 変更する 3 か所（プラグイン版なら 4 か所）
 
 例: `https://emr.example.jp/patients/123/prescriptions` の処方画面に対応する場合。
 
@@ -12,7 +12,7 @@
 
 ### 2. `bridge/server.mjs` — 接続を受け付けるオリジン
 
-`ALLOWED_ORIGINS` の既定値を書き換えるか、起動時に指定します。
+`ALLOWED_ORIGINS` の既定値を書き換えるか、起動時に指定します。プラグイン版を使う場合は `streamdeck-plugin/src/hub.ts` の `ALLOWED_ORIGINS` を書き換えて `npm run build` します。
 
 ```bash
 ALLOWED_ORIGINS=https://emr.example.jp npm start

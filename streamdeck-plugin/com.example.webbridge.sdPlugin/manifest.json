@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "Name": "Web Bridge (PoC)",
+  "Version": "0.1.0.0",
+  "Author": "example",
+  "Actions": [
+    {
+      "Name": "Web に送る",
+      "UUID": "com.example.webbridge.send",
+      "Icon": "imgs/actions/send/icon",
+      "Tooltip": "設定した値を、Chrome 拡張が動いているページに送る",
+      "PropertyInspectorPath": "ui/send-to-web.html",
+      "Controllers": ["Keypad"],
+      "States": [
+        {
+          "Image": "imgs/actions/send/key",
+          "TitleAlignment": "middle"
+        }
+      ]
+    }
+  ],
+  "Category": "Web Bridge (PoC)",
+  "CategoryIcon": "imgs/plugin/category-icon",
+  "CodePath": "bin/plugin.js",
+  "Description": "Chrome 拡張と WebSocket でつなぎ、Web ページの入力欄に値を流し込む学習用サンプル",
+  "Icon": "imgs/plugin/marketplace",
+  "SDKVersion": 3,
+  "Software": {
+    "MinimumVersion": "7.1"
+  },
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "12"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Nodejs": {
+    "Version": "24",
+    "Debug": "enabled"
+  },
+  "UUID": "com.example.webbridge"
+}

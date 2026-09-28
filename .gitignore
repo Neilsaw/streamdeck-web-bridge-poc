@@ -1,3 +1,7 @@
 node_modules/
 .DS_Store
 *.log
+
+# Stream Deck プラグインのビルド成果物・ログ
+**/*.sdPlugin/bin
+**/*.sdPlugin/logs

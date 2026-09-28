@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head lang="ja">
+    <title>Web に送る</title>
+    <meta charset="utf-8" />
+    <script src="https://sdpi-components.dev/releases/v4/sdpi-components.js"></script>
+  </head>
+
+  <body>
+    <!--
+      Stream Deck アプリでボタンを選んだときに下に出る設定欄（プロパティインスペクター）。
+      setting="..." の名前で保存され、プラグイン側では ev.payload.settings.<名前> で読める。
+      部品の一覧: https://sdpi-components.dev/docs/components
+    -->
+    <sdpi-item label="テキスト">
+      <sdpi-textfield setting="text" placeholder="例: hello"></sdpi-textfield>
+    </sdpi-item>
+
+    <sdpi-item label="追加項目">
+      <sdpi-textarea
+        setting="fields"
+        rows="4"
+        placeholder="1 行に 1 つ、名前=値&#10;例: drug=ロキソニン錠60mg&#10;days=7"
+      ></sdpi-textarea>
+    </sdpi-item>
+  </body>
+</html>
